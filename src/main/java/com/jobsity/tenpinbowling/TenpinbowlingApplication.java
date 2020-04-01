@@ -78,6 +78,11 @@ public class TenpinbowlingApplication implements CommandLineRunner {
 		 	//load file and return bowling frames
 		    GameBoardTO gameBoard =  this.gameBoardService.load(fileName);
 		    
+		    if (!gameBoard.isValid()) {
+		        logger.error("The dashboard is NOT valid!");
+		        return;
+		    }
+		    
 		    //Calculate total score giving bowling frames 
 		    gameBoard = this.pointService.calculate(gameBoard);
 		    

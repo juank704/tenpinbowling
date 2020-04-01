@@ -13,8 +13,10 @@ import com.jobsity.tenpinbowling.entity.GameBoardTO;
 import com.jobsity.tenpinbowling.entity.LineTO;
 import com.jobsity.tenpinbowling.service.IFileService;
 import com.jobsity.tenpinbowling.service.IGameBoardService;
+import com.jobsity.tenpinbowling.service.IInputValidationService;
 import com.jobsity.tenpinbowling.service.ILineService;
 import com.jobsity.tenpinbowling.service.IScoreService;
+
 
 
 /**
@@ -36,6 +38,9 @@ public class GameBoardServiceImpl implements IGameBoardService {
 	  
 	  @Autowired
 	  private ILineService lineService;
+	  
+	  @Autowired
+	  private IInputValidationService inputValidationService;
 	  
 	  
 	  /**
@@ -80,6 +85,12 @@ public class GameBoardServiceImpl implements IGameBoardService {
 			    //Create new gameBoard
 			    GameBoardTO gameBoard = new GameBoardTO(linesTO);
 			    
+			    //Verify is gameBoard is valid
+			    boolean isValid = this.isValidGameBoard(gameBoard);
+			    
+			    //set if gameBoard is valid or not
+			    gameBoard.setValid(isValid);
+			
 			    return gameBoard;
 			    
 		  } catch (Exception e) {
@@ -88,6 +99,15 @@ public class GameBoardServiceImpl implements IGameBoardService {
 		  }
 		  
 	  }
+
+
+	  /**
+	   * Validate if the load game meets the requirements for a valid game
+	   */
+	@Override
+	public boolean isValidGameBoard(GameBoardTO gameboard) {
+		return this.inputValidationService.isValidGameBoard(gameboard);
+	}
 	
 	
 }
