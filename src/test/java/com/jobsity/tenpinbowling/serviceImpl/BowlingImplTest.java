@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.jobsity.tenpinbowling.service.IFileService;
+import com.jobsity.tenpinbowling.service.IFrameService;
+import com.jobsity.tenpinbowling.service.IInputValidationService;
 import com.jobsity.tenpinbowling.service.ILineService;
 import com.jobsity.tenpinbowling.service.IScoreService;
 
@@ -17,7 +19,8 @@ import com.jobsity.tenpinbowling.service.IScoreService;
     ScoreServiceImpl.class,
     LineServiceImpl.class,
     PointServiceImpl.class,
-    OutputServiceImpl.class})
+    OutputServiceImpl.class,
+    InputValidationServiceImpl.class})
 /**
  * Base Class for Injecting service
  * @author Juan_
@@ -33,5 +36,11 @@ public abstract class BowlingImplTest {
 	
 	@Autowired
 	protected ILineService lineService;
+	
+	@Autowired
+	protected IFrameService frameService;
+	
+	@Autowired
+	protected IInputValidationService inputValidationService;
 
 }

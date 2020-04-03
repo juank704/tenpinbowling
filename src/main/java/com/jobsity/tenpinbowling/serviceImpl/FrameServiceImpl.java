@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.jobsity.tenpinbowling.entity.FrameTO;
@@ -20,6 +22,8 @@ import com.jobsity.tenpinbowling.util.ScoreUtil;
  */
 @Service
 public class FrameServiceImpl implements IFrameService {
+	
+	 protected Logger logger = LoggerFactory.getLogger(FrameServiceImpl.class);
 
 	/**
 	 * Create a frame with n number of throws, according with scores
@@ -43,7 +47,10 @@ public class FrameServiceImpl implements IFrameService {
 
 	@Override
 	public List<FrameTO> createFrames(List<String> scores) {
+		
 		List<FrameTO> frames = new ArrayList<FrameTO>();
+		
+		try {
 
 	    if (scores == null || (scores != null && scores.isEmpty())) {
 	      return frames;
@@ -84,6 +91,13 @@ public class FrameServiceImpl implements IFrameService {
 	      }
 	      currentFrame++;
 	    }
+	    
+		}catch (Exception e) {
+			this.logger.error(String.format("Error creating Frame {0}", e.getMessage()));
+			return null;
+		}
+	    
+	    
 	    return frames;
 	  }
 	

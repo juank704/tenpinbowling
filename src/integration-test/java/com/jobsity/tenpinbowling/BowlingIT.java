@@ -10,6 +10,7 @@ import com.jobsity.tenpinbowling.service.IPointService;
 import com.jobsity.tenpinbowling.serviceImpl.FileServiceImpl;
 import com.jobsity.tenpinbowling.serviceImpl.FrameServiceImpl;
 import com.jobsity.tenpinbowling.serviceImpl.GameBoardServiceImpl;
+import com.jobsity.tenpinbowling.serviceImpl.InputValidationServiceImpl;
 import com.jobsity.tenpinbowling.serviceImpl.LineServiceImpl;
 import com.jobsity.tenpinbowling.serviceImpl.OutputServiceImpl;
 import com.jobsity.tenpinbowling.serviceImpl.PointServiceImpl;
@@ -24,7 +25,8 @@ import com.jobsity.tenpinbowling.serviceImpl.ScoreServiceImpl;
     ScoreServiceImpl.class,
     LineServiceImpl.class,
     PointServiceImpl.class,
-    OutputServiceImpl.class})
+    OutputServiceImpl.class,
+    InputValidationServiceImpl.class})
 public abstract class BowlingIT {
 
 	  @Autowired

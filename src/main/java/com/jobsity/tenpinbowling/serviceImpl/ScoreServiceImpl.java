@@ -42,10 +42,7 @@ public class ScoreServiceImpl implements IScoreService {
 		      String score = record[1];
 		      scores = this.addScore(scores, bowler, score);
 		    } else {
-		       logger.error(String.format("Can't read line {0} score set to F",line));
-		       String bowler = record[0];
-			   String score = "0";
-			   scores = this.addScore(scores, bowler, score);
+		       logger.error(String.format("Can't read line {0} ",line));
 		      }
 		    }
 		    return scores;
